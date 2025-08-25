@@ -14,32 +14,40 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movementInput;
 
-    // Reference to PlayerInput component
+
+    #region Input System
     private PlayerInput playerInput;
     private InputAction moveAction;
+    private InputAction shootAction;
+    #endregion
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
-        if (moveAction == null)
-        {
-            Debug.LogError("Move action not found in Input System.");
-        }
+        shootAction = InputSystem.actions.FindAction("Shoot");
     }
 
     void Update()
     {
         ReadInput();
-        Move();
+        OnMove();
         Debug.DrawRay(transform.position, movementInput * 2f, Color.red);
     }
 
     private void ReadInput()
     {
         movementInput = moveAction.ReadValue<Vector2>();
-    }
 
-    public void Move()
+        if (shootAction.triggered)
+        {
+            OnShoot();
+        }
+    }
+    public void OnShoot()
+    {
+        Debug.Log("Shoot action triggered");
+    }
+    public void OnMove()
     {
         if (movementInput != Vector2.zero)
         {
