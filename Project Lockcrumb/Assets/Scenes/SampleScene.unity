@@ -719,7 +719,6 @@ MonoBehaviour:
   moveSpeed: 5
   dashSpeed: 20
   dashDuration: 0.2
-  Rb: {fileID: 70913359}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IWeapon : MonoBehaviour
+public interface IWeapon
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    WeaponProperties Properties { get; set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    GameObject BulletPrefab { get;}
+    void Shoot();
+    void Reload();
 }

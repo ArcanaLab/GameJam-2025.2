@@ -14,9 +14,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movementInput;
 
+    public Weapon currentWeapon;
+
 
     #region Input System
-    private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction shootAction;
     #endregion
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
     }
     public void OnShoot()
     {
-        Debug.Log("Shoot action triggered");
+        currentWeapon.Shoot();
     }
     public void OnMove()
     {

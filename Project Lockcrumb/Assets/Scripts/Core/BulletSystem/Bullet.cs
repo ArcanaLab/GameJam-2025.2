@@ -16,13 +16,11 @@ public class Bullet : MonoBehaviour, IBullet
 
     public void Travel()
     {
-
         transform.position += properties.Speed * Time.deltaTime * Vector3.up;
     }
     
     private void Update()
     {
-        Debug.Log("Bullet properties: " + properties.displayName + ", Speed: " + properties.Speed + ", Lifetime: " + properties.Lifetime);
         Travel();
         _currentLifetime += Time.deltaTime;
         if (_currentLifetime >= properties.Lifetime)
