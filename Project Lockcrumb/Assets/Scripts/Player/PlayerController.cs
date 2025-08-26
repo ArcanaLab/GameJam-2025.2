@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,12 +21,14 @@ public class PlayerController : MonoBehaviour
     #region Input System
     private InputAction moveAction;
     private InputAction shootAction;
+    private InputAction reloadAction;
     #endregion
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         shootAction = InputSystem.actions.FindAction("Shoot");
+        reloadAction = InputSystem.actions.FindAction("Reload");
     }
 
     void Update()
@@ -43,6 +46,11 @@ public class PlayerController : MonoBehaviour
         {
             OnShoot();
         }
+        if (reloadAction.triggered)
+        {
+            currentWeapon.Reload();
+        }
+
     }
     public void OnShoot()
     {

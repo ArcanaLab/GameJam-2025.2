@@ -5,6 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour, IWeapon
 {
     [SerializeField] private WeaponProperties properties;
+
+    [SerializeField] protected GameObject shooter;
     public WeaponProperties Properties
     {
         get => properties;

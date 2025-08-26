@@ -10,7 +10,7 @@ public class Pistol : Weapon
         if (bulletsOnMagazine > 0)
         {
 
-            var _bulletGameObject = Instantiate(BulletPrefab, transform.position, transform.rotation, _bulletPool);
+            var _bulletGameObject = Instantiate(BulletPrefab, shooter.transform.position ,  shooter.transform.rotation, _bulletPool);
             _bulletGameObject.name = BulletPrefab.name;
             bulletsOnMagazine--;
         }
