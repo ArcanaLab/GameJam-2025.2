@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movementInput;
 
-    public Weapon currentWeapon;
+
 
 
     #region Input System
@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private InputAction shootAction;
     private InputAction reloadAction;
     #endregion
+
+    [Header("Testing")]
+    public Weapon currentWeapon;
 
     private void Start()
     {
