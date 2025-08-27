@@ -15,9 +15,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movementInput;
 
-
-
-
     #region Input System
     private InputAction moveAction;
     private InputAction shootAction;
@@ -63,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         if (movementInput != Vector2.zero)
         {
-            transform.position += (Vector3)(movementInput.normalized * moveSpeed * Time.fixedDeltaTime);
+            transform.position += (Vector3)(moveSpeed * Time.fixedDeltaTime * movementInput.normalized);
         }
     }
 }

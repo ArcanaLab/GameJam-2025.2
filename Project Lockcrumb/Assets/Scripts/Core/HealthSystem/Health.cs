@@ -27,7 +27,6 @@ public class Health : MonoBehaviour
     [SerializeField] private float _iframeDuration = 1f;
     private float _iframeTimer = 0f;
 
-
     //Todo: Add diferenzation between frendly and enemy damage
     //Todo: Add resistance and weakness system
     //Todo: Add armor system
@@ -86,6 +85,7 @@ public class Health : MonoBehaviour
         _isDead = true;
         OnDeath?.Invoke();
         Debug.Log($"{gameObject.name} has died.");
+        Destroy(gameObject); // Optional: Destroy the game object on death
     }
     
 }
