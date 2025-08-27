@@ -8,5 +8,5 @@ public interface IWeapon
 
     GameObject BulletPrefab { get;}
     void Shoot();
-    void Reload();
+    IEnumerator Reload();
 }

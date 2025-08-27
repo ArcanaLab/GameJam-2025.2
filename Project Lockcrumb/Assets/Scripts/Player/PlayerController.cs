@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         }
         if (reloadAction.triggered)
         {
-            currentWeapon.Reload();
+            StartCoroutine(currentWeapon.Reload());
         }
 
     }
