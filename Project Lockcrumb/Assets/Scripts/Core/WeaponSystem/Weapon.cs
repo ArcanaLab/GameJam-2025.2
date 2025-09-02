@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour, IWeapon
     [SerializeField] private WeaponProperties properties;
 
     [SerializeField] protected GameObject shooter;
+
     public WeaponProperties Properties
     {
         get => properties;
@@ -19,8 +20,6 @@ public class Weapon : MonoBehaviour, IWeapon
 
     protected bool activeReloadSuccess = false;
     private bool isReloading = false;
-
-
     private const string BULLET_POOL_TAG = "Bullet Pool";
     protected Transform _bulletPool;
 
@@ -31,26 +30,7 @@ public class Weapon : MonoBehaviour, IWeapon
         _bulletPool = GameObject.FindGameObjectWithTag(BULLET_POOL_TAG).transform;
     }
 
-    /*
-        public void Reload()
-        {
-            Debug.Log("Reloading...");
-
-            int _bulletsToReload = properties.MagazineSize - bulletsOnMagazine;
-            if (currentAmmoOnReserve >= _bulletsToReload)
-            {
-                bulletsOnMagazine += _bulletsToReload;
-                currentAmmoOnReserve -= _bulletsToReload;
-            }
-            else
-            {
-                bulletsOnMagazine += currentAmmoOnReserve;
-                currentAmmoOnReserve = 0;
-            }
-
-        }
-        */
-    public IEnumerator Reload()
+    public virtual IEnumerator Reload()
     { 
         if (isReloading) yield break;
         isReloading = true;

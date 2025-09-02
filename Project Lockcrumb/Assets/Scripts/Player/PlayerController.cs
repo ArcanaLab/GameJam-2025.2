@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,13 +18,17 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput;
 
     #region Input System
-    private InputAction moveAction;
-    private InputAction shootAction;
-    private InputAction reloadAction;
+        private InputAction moveAction;
+        private InputAction shootAction;
+        private InputAction reloadAction;
+    #endregion
+
+    #region Player Actions
+        public  static event Action OnPlayerReload;
     #endregion
 
     [Header("Testing")]
-    public Weapon currentWeapon;
+    public Weapon currentWeapon { get ; set; }
 
     private void Start()
     {
@@ -48,6 +54,7 @@ public class PlayerController : MonoBehaviour
         }
         if (reloadAction.triggered)
         {
+            OnPlayerReload?.Invoke();
             StartCoroutine(currentWeapon.Reload());
         }
 
@@ -60,7 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         if (movementInput != Vector2.zero)
         {
-            transform.position += (Vector3)(moveSpeed * Time.fixedDeltaTime * movementInput.normalized);
+            transform.position += (Vector3)(moveSpeed * Time.deltaTime * movementInput.normalized);
         }
     }
 }
